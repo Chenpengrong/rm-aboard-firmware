@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "STM32F4",
+            "includePath": [
+                "${workspaceFolder}/Core/Inc",
+                "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+                "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Include",
+                "${workspaceFolder}/User/BSP/Inc",
+                "${workspaceFolder}/User/Components/Controller/Inc",
+                "${workspaceFolder}/User/Components/Device/Inc"
+            ],
+            "defines": [
+                "USE_HAL_DRIVER",
+                "STM32F427xx",
+                "DEBUG"
+            ],
+            "compilerPath": "D:/software/msys2/msys64/ucrt64/bin/arm-none-eabi-gcc.exe",
+            "cStandard": "c11",
+            "intelliSenseMode": "gcc-arm"
+        }
+    ],
+    "version": 4
+}

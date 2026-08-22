@@ -1,0 +1,94 @@
+{
+	"kind" : "toolchains",
+	"toolchains" : 
+	[
+		{
+			"compiler" : 
+			{
+				"id" : "GNU",
+				"implicit" : {},
+				"path" : "D:/software/msys2/msys64/ucrt64/bin/arm-none-eabi-gcc.exe",
+				"version" : ""
+			},
+			"language" : "ASM",
+			"sourceFileExtensions" : 
+			[
+				"s",
+				"S",
+				"asm"
+			]
+		},
+		{
+			"compiler" : 
+			{
+				"id" : "GNU",
+				"implicit" : 
+				{
+					"includeDirectories" : 
+					[
+						"D:/software/msys2/msys64/ucrt64/lib/gcc/arm-none-eabi/16.1.0/include",
+						"D:/software/msys2/msys64/ucrt64/lib/gcc/arm-none-eabi/16.1.0/include-fixed",
+						"D:/software/msys2/msys64/ucrt64/arm-none-eabi/include"
+					],
+					"linkDirectories" : [],
+					"linkFrameworkDirectories" : [],
+					"linkLibraries" : []
+				},
+				"path" : "D:/software/msys2/msys64/ucrt64/bin/arm-none-eabi-gcc.exe",
+				"version" : "16.1.0"
+			},
+			"language" : "C",
+			"sourceFileExtensions" : 
+			[
+				"c",
+				"m"
+			]
+		},
+		{
+			"compiler" : 
+			{
+				"id" : "GNU",
+				"implicit" : 
+				{
+					"includeDirectories" : 
+					[
+						"D:/software/msys2/msys64/ucrt64/arm-none-eabi/include/c++/16.1.0",
+						"D:/software/msys2/msys64/ucrt64/arm-none-eabi/include/c++/16.1.0/arm-none-eabi/thumb/v7e-m+fp/hard",
+						"D:/software/msys2/msys64/ucrt64/arm-none-eabi/include/c++/16.1.0/backward",
+						"D:/software/msys2/msys64/ucrt64/lib/gcc/arm-none-eabi/16.1.0/include",
+						"D:/software/msys2/msys64/ucrt64/lib/gcc/arm-none-eabi/16.1.0/include-fixed",
+						"D:/software/msys2/msys64/ucrt64/arm-none-eabi/include"
+					],
+					"linkDirectories" : [],
+					"linkFrameworkDirectories" : [],
+					"linkLibraries" : []
+				},
+				"path" : "D:/software/msys2/msys64/ucrt64/bin/arm-none-eabi-g++.exe",
+				"version" : "16.1.0"
+			},
+			"language" : "CXX",
+			"sourceFileExtensions" : 
+			[
+				"C",
+				"M",
+				"c++",
+				"cc",
+				"cpp",
+				"cxx",
+				"mm",
+				"mpp",
+				"CPP",
+				"ixx",
+				"cppm",
+				"ccm",
+				"cxxm",
+				"c++m"
+			]
+		}
+	],
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 1
+	}
+}

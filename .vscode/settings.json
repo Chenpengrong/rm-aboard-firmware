@@ -1,0 +1,10 @@
+{
+    "stm32.selectedChip": "STM32F427IIHX",
+    "stm32.debugInterface": "stlink",
+    "cmake.cmakePath": "D:/software/msys2/msys64/ucrt64/bin/cmake.exe",
+    "cmake.ninjaPath": "D:/software/msys2/msys64/ucrt64/bin/ninja.exe",
+    "cmake.generator": "Ninja",
+    "cmake.configureArgs": [
+        "-DCMAKE_MAKE_PROGRAM=D:/software/msys2/msys64/ucrt64/bin/ninja.exe"
+    ]
+}

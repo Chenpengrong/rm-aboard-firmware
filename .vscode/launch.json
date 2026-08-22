@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "cortex-debug",
+            "request": "launch",
+            "name": "STM32 Debug (STM32F427IIHX)",
+            "servertype": "openocd",
+            "cwd": "${workspaceFolder}",
+            "executable": "e:\\xiangmu\\infantry27\\build\\Debug\\infantry27.elf",
+            "device": "STM32F427IIHX",
+            "configFiles": [
+                "interface/stlink-v2.cfg",
+                "target/stm32f4x.cfg"
+            ],
+            "gdbPath": "D:\\software\\msys2\\msys64\\ucrt64\\bin\\arm-none-eabi-gdb.exe",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "parsed",
+            "armToolchainPath": "D:\\software\\msys2\\msys64\\ucrt64\\bin",
+            "liveWatch": {
+                "enabled": true,
+                "samplesPerSecond": 4
+            },
+            "overrideLaunchCommands": [
+                "monitor reset init",
+                "monitor flash write_image erase \"e:/xiangmu/infantry27/build/Debug/infantry27.elf\"",
+                "monitor reset halt",
+                "monitor arm semihosting enable"
+            ],
+            "overrideRestartCommands": [
+                "monitor reset halt"
+            ],
+            "serverpath": "D:\\software\\msys2\\msys64\\ucrt64\\bin\\openocd.exe",
+            "searchDir": [
+                "D:\\software\\msys2\\msys64\\ucrt64\\share\\openocd\\scripts"
+            ]
+        }
+    ]
+}
