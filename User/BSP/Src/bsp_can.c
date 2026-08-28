@@ -20,13 +20,13 @@
 /**
  * @brief The structure that contains the Information of CAN1 and CAN2 Receive.
  */
-CAN_RxFrame_TypeDef CAN_RxFIFO0Frame;
-CAN_RxFrame_TypeDef CAN_RxFIFO1Frame;
+CAN_RxFrame_t CAN_RxFIFO0Frame;
+CAN_RxFrame_t CAN_RxFIFO1Frame;
 
 /**
  * @brief The structure that contains the Information of CAN1 Transmit.
  */
-CAN_TxFrame_TypeDef CAN1_TxFrame = {
+CAN_TxFrame_t CAN1_TxFrame = {
     .hcan = &hcan1,
     .Header = {
         .IDE = CAN_ID_STD,
@@ -41,7 +41,7 @@ CAN_TxFrame_TypeDef CAN1_TxFrame = {
 /**
  * @brief The structure that contains the Information of CAN2 Transmit.
  */
-CAN_TxFrame_TypeDef CAN2_TxFrame = {
+CAN_TxFrame_t CAN2_TxFrame = {
     .hcan = &hcan2,
     .Header = {
         .IDE = CAN_ID_STD,
@@ -103,7 +103,7 @@ void BSP_CAN_Init(void)
   * @param  *CAN_TxFrame :the structure that contains the Information of CAN
   * @retval None
   */
-void USER_CAN_AddMessageToTxMailbox(CAN_TxFrame_TypeDef *CAN_TxFrame)
+void USER_CAN_AddMessageToTxMailbox(CAN_TxFrame_t *CAN_TxFrame)
 {
     uint32_t TxMailbox = 0;
     HAL_CAN_AddTxMessage(CAN_TxFrame->hcan, &CAN_TxFrame->Header, CAN_TxFrame->Data, &TxMailbox);

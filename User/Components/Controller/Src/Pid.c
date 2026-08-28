@@ -4,8 +4,8 @@
   * @file           : PID.c
   * @brief          : PID Algorithm
   * @author         : Chen
-  * @date           : 2026/07/24
-  * @version        : v1.0
+  * @date           : 2026/08/23
+  * @version        : v1.1
   ******************************************************************************
   * @attention      : Choose suitable PID according to your actual situation
   ******************************************************************************
@@ -15,6 +15,45 @@
 /* Including ------------------------------------------------------------------*/
 #include "Pid.h"
 
+
+/**
+ * @brief 初始化PID控制器
+ */
+void PID_Init(PID_t *pid)
+{
+    pid->Kp = 0.0f;
+    pid->Ki = 0.0f;
+    pid->Kd = 0.0f;
+    pid->Kf = 0.0f;
+    pid->accrued_error = 0.0f;
+    pid->history_error = 0.0f;
+    pid->max_accrued = 0.0f;
+    pid->max_output = 0.0f;
+    pid->dead_out = 0.0f;
+}
+
+/**
+ * @brief  PID参数设置
+ * @param  pid         PID控制器句柄
+ * @param  Kp          比例增益
+ * @param  Ki          积分增益
+ * @param  Kd          微分增益
+ * @param  Kf          前馈增益
+ * @param  max_accrued 积分限幅
+ * @param  max_output  输出限幅
+ * @param  dead_out    死区阈值
+ */
+void PID_SetParam(PID_t *pid, float Kp, float Ki, float Kd, float Kf,
+                  float max_accrued, float max_output, float dead_out)
+{
+    pid->Kp = Kp;
+    pid->Ki = Ki;
+    pid->Kd = Kd;
+    pid->Kf = Kf;
+    pid->max_accrued = max_accrued;
+    pid->max_output = max_output;
+    pid->dead_out = dead_out;
+}
 
 /**
  * @brief 最简单的PID控制器计算函数

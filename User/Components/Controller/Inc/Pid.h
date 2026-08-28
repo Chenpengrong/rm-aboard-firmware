@@ -4,8 +4,8 @@
   * @file           : PID.h
   * @brief          : The header file of PID.h 
   * @author         : Chen
-  * @date           : 2026/07/24
-  * @version        : v1.0
+  * @date           : 2026/08/23
+  * @version        : v1.1
   ******************************************************************************
   * @attention      : Variables of type PID_t must be declared as global variables,
   *                  since history_error and accrued_error need to persist without being reset to zero.
@@ -36,6 +36,9 @@ typedef struct
 } PID_t;
 
 /*  Externs-------------------------------------*/
+extern void PID_Init(PID_t *pid);
+extern void PID_SetParam(PID_t *pid, float Kp, float Ki, float Kd, float Kf,
+                         float max_accrued, float max_output, float dead_out);
 extern float PIDCompute(PID_t *pid, float error);
 extern float PIDCompute_Tracking(PID_t *pid, float error, float target_rate);
 extern float PIDCompute_Disturbance(PID_t *pid, float error, float feedforward_static);

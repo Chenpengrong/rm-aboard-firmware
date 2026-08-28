@@ -6,11 +6,16 @@
                 "${workspaceFolder}/Core/Inc",
                 "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc",
                 "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy",
+                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/include",
+                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2",
+                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F",
                 "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
                 "${workspaceFolder}/Drivers/CMSIS/Include",
-                "${workspaceFolder}/User/BSP/Inc",
-                "${workspaceFolder}/User/Components/Controller/Inc",
-                "${workspaceFolder}/User/Components/Device/Inc"
+                "${workspaceFolder}/User/APP/Inc",
+            "${workspaceFolder}/User/BSP/Inc",
+            "${workspaceFolder}/User/Components/Controller/Inc",
+            "${workspaceFolder}/User/Components/Debug/Inc",
+            "${workspaceFolder}/User/Components/Device/Inc"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

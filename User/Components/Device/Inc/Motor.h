@@ -72,7 +72,7 @@ typedef struct
 {
   uint32_t TxIdentifier;   /*!< Specifies FDCAN transmit identifier */
   uint32_t RxIdentifier;   /*!< Specifies FDCAN recieved identifier */
-} CAN_Frame_Info_Typedef;
+} CAN_Frame_Info_t;
 
 /**
  * @brief The structure that contains the Information of DJI motor Receive.
@@ -86,7 +86,7 @@ typedef struct
   int16_t Current;     /*!< Motor current value */
   uint8_t Temperature; /*!< Motor temperature */
   float    Angle;   /*!< Motor angle in degree */
-} DJI_Motor_Data_Typedef;
+} DJI_Motor_Data_t;
 
 /**
  * @brief The structure that contains the Information of DM motor Receive.
@@ -104,7 +104,7 @@ typedef struct
   float  Torque;     /*!< Motor Torque   */
   float  Temperature_MOS;   /*!< Motor Temperature_MOS   */
 	float  Temperature_Rotor; /*!< Motor Temperature_Rotor */
-} DM_Motor_Data_Typedef;
+} DM_Motor_Data_t;
 
 /**
  * @brief typedef structure that contains the param range for the DM_Motor .
@@ -114,7 +114,7 @@ typedef struct
   float  P_MAX;
 	float  V_MAX;
 	float  T_MAX;
-}DM_Motor_Param_Range_Typedef;
+}DM_Motor_Param_Range_t;
 
 //------------------------------------------------------------------------------
 
@@ -124,9 +124,9 @@ typedef struct
 typedef struct
 {
   DJI_Motor_Type_e Type;   /*!< Type of Motor */
-  CAN_Frame_Info_Typedef CANFrame;    /*!< information for the CAN Transfer */
-  DJI_Motor_Data_Typedef Data;   /*!< information for the Motor Device */
-}DJI_Motor_Info_Typedef;
+  CAN_Frame_Info_t CANFrame;    /*!< information for the CAN Transfer */
+  DJI_Motor_Data_t Data;   /*!< information for the Motor Device */
+}DJI_Motor_Info_t;
 
 /**
  * @brief typedef structure that contains the information for the Damiao Motor Device.
@@ -135,19 +135,19 @@ typedef struct
 {
   DM_Motor_Type_e Type;   /*!< Type of Motor */
   DM_Motor_Control_Mode_Type_e Control_Mode;   /*!< Control mode for the DM_Motor */
-  CAN_Frame_Info_Typedef CANFrame;    /*!< information for the CAN Transfer */
-  DM_Motor_Data_Typedef Data;   /*!< information for the Motor Device */
-  DM_Motor_Param_Range_Typedef Param_Range;   /*!< Param range for the DM_Motor */
-}DM_Motor_Info_Typedef;
+  CAN_Frame_Info_t CANFrame;    /*!< information for the CAN Transfer */
+  DM_Motor_Data_t Data;   /*!< information for the Motor Device */
+  DM_Motor_Param_Range_t Param_Range;   /*!< Param range for the DM_Motor */
+}DM_Motor_Info_t;
 
 /* Externs ------------------------------------------------------------------*/
-extern DJI_Motor_Info_Typedef DJI_YAW_Motor,DJI_Chassis_Motor[4],DJI_Paddle_Wheel_Motor;
-extern DM_Motor_Info_Typedef DM_Pitch_Motor;
+extern DJI_Motor_Info_t DJI_YAW_Motor,DJI_Chassis_Motor[4],DJI_Paddle_Wheel_Motor;
+extern DM_Motor_Info_t DM_Pitch_Motor;
 
-extern void DJI_Motor_Info_Update(uint32_t *Identifier, uint8_t *Rx_Buf,DJI_Motor_Info_Typedef *DJI_Motor);
-extern void DM_Motor_Info_Update(uint32_t *Identifier,uint8_t *Rx_Buf,DM_Motor_Info_Typedef *DM_Motor);
-extern void DM_Motor_Command(CAN_TxFrame_TypeDef *CAN_TxFrame,DM_Motor_Info_Typedef *DM_Motor,DM_Motor_CMD_Type_e CMD);
-extern void DM_Motor_CAN_TxMessage(CAN_TxFrame_TypeDef *CAN_TxFrame,DM_Motor_Info_Typedef *DM_Motor,float Postion, float Velocity, float KP, float KD, float Torque);
-extern void DJI_Motor_CAN_TxMessage(CAN_TxFrame_TypeDef *CAN_TxFrame,DJI_Motor_Info_Typedef *DJI_Motor,int16_t Current_or_Velocity[4]);
+extern void DJI_Motor_Info_Update(uint32_t *Identifier, uint8_t *Rx_Buf,DJI_Motor_Info_t *DJI_Motor);
+extern void DM_Motor_Info_Update(uint32_t *Identifier,uint8_t *Rx_Buf,DM_Motor_Info_t *DM_Motor);
+extern void DM_Motor_Command(CAN_TxFrame_t *CAN_TxFrame,DM_Motor_Info_t *DM_Motor,DM_Motor_CMD_Type_e CMD);
+extern void DM_Motor_CAN_TxMessage(CAN_TxFrame_t *CAN_TxFrame,DM_Motor_Info_t *DM_Motor,float Postion, float Velocity, float KP, float KD, float Torque);
+extern void DJI_Motor_CAN_TxMessage(CAN_TxFrame_t *CAN_TxFrame,DJI_Motor_Info_t *DJI_Motor,int16_t Current_or_Velocity[4]);
 
 #endif //MOTOR_H

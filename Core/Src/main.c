@@ -18,13 +18,15 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 #include "can.h"
+#include "dma.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "bsp_can.h"
-#include "Motor.h"
+#include "bsp_mcu.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -50,6 +52,7 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -76,7 +79,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+  MCU_Init();
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -88,22 +91,32 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_CAN1_Init();
   MX_CAN2_Init();
+  MX_UART8_Init();
+  MX_USART1_UART_Init();
+  MX_UART7_Init();
   /* USER CODE BEGIN 2 */
-  BSP_CAN_Init();
-  HAL_Delay(300);
-  DM_Motor_Command(&CAN2_TxFrame,&DM_Pitch_Motor,Motor_Enable);
-  HAL_Delay(300);
+
   /* USER CODE END 2 */
+
+  /* Init scheduler */
+  osKernelInitialize();
+
+  /* Call init function for freertos objects (in cmsis_os2.c) */
+  MX_FREERTOS_Init();
+
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    int16_t Current_or_Velocity[4] = {2000,2000,2000,2000};
-    DJI_Motor_CAN_TxMessage(&CAN1_TxFrame,DJI_Chassis_Motor,Current_or_Velocity);
-    DM_Motor_CAN_TxMessage(&CAN2_TxFrame,&DM_Pitch_Motor,0.f,0.f,2.f,0.1f,0.f);
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -159,6 +172,28 @@ void SystemClock_Config(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
+
+/**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM2 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  /* USER CODE BEGIN Callback 0 */
+
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM2)
+  {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
+
+  /* USER CODE END Callback 1 */
+}
 
 /**
   * @brief  This function is executed in case of error occurrence.

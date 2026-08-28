@@ -20,7 +20,7 @@
 /**
  * @brief The structure that contains the Information of yaw motor.Use DJI GM6020 motor.
  */
-DJI_Motor_Info_Typedef DJI_YAW_Motor =
+DJI_Motor_Info_t DJI_YAW_Motor =
 {
     .Type = DJI_GM6020,
     .CANFrame = {
@@ -32,7 +32,7 @@ DJI_Motor_Info_Typedef DJI_YAW_Motor =
 /**
  * @brief The structure that contains the Information of chassis motor.Use DJI M3508 motor.
  */ 
-DJI_Motor_Info_Typedef DJI_Chassis_Motor[4] =
+DJI_Motor_Info_t DJI_Chassis_Motor[4] =
 {
     [0] = {
         .Type = DJI_M3508,
@@ -67,7 +67,7 @@ DJI_Motor_Info_Typedef DJI_Chassis_Motor[4] =
 /**
  * @brief The structure that contains the Information of paddle wheel motor.Use DJI M2006 motor.
  */
-DJI_Motor_Info_Typedef DJI_Paddle_Wheel_Motor =
+DJI_Motor_Info_t DJI_Paddle_Wheel_Motor =
 {
     .Type = DJI_M2006,
     .CANFrame = {
@@ -81,7 +81,7 @@ DJI_Motor_Info_Typedef DJI_Paddle_Wheel_Motor =
 /**
  * @brief The structure that contains the Information of joint motor.Use DM 4310 motor.
  */
-DM_Motor_Info_Typedef DM_Pitch_Motor =
+DM_Motor_Info_t DM_Pitch_Motor =
 {
     .Type = DM_4310,
     .Control_Mode = MIT,
@@ -95,9 +95,9 @@ DM_Motor_Info_Typedef DM_Pitch_Motor =
 
 float F_Loop_Constrain(float Input, float Min_Value, float Max_Value);
 
-static float DJI_Motor_Encoder_To_Anglesum(DJI_Motor_Data_Typedef *,float ,uint16_t );
+static float DJI_Motor_Encoder_To_Anglesum(DJI_Motor_Data_t *,float ,uint16_t );
 
-static float DJI_Motor_Encoder_To_Angle(DJI_Motor_Data_Typedef *,float ,uint16_t );
+static float DJI_Motor_Encoder_To_Angle(DJI_Motor_Data_t *,float ,uint16_t );
 
 static float uint_to_float(int X_int, float X_min, float X_max, int Bits);
 
@@ -113,7 +113,7 @@ static int float_to_uint(float x, float x_min, float x_max, int bits);
   *         that contains the information of DJI motor
   * @retval None
   */
-void DJI_Motor_Info_Update(uint32_t *Identifier, uint8_t *Rx_Buf,DJI_Motor_Info_Typedef *DJI_Motor)
+void DJI_Motor_Info_Update(uint32_t *Identifier, uint8_t *Rx_Buf,DJI_Motor_Info_t *DJI_Motor)
 {
 	/* check the Identifier */
 	if(*Identifier != DJI_Motor->CANFrame.RxIdentifier) return;
@@ -150,7 +150,7 @@ void DJI_Motor_Info_Update(uint32_t *Identifier, uint8_t *Rx_Buf,DJI_Motor_Info_
   * @param  DM_Motor: pointer to a DM_Motor_Info_Typedef structure that contains the information of DM_Motor
   * @retval None
   */
-void DM_Motor_Info_Update(uint32_t *Identifier,uint8_t *Rx_Buf,DM_Motor_Info_Typedef *DM_Motor)
+void DM_Motor_Info_Update(uint32_t *Identifier,uint8_t *Rx_Buf,DM_Motor_Info_t *DM_Motor)
 {
 	 
 	if(*Identifier != DM_Motor->CANFrame.RxIdentifier) return;
@@ -178,7 +178,7 @@ void DM_Motor_Info_Update(uint32_t *Identifier,uint8_t *Rx_Buf,DM_Motor_Info_Typ
   * @param  CMD: Transmit Command  (DM_Motor_CMD_Type_e)
   * @retval None
   */
-void DM_Motor_Command(CAN_TxFrame_TypeDef *CAN_TxFrame,DM_Motor_Info_Typedef *DM_Motor,DM_Motor_CMD_Type_e CMD){
+void DM_Motor_Command(CAN_TxFrame_t *CAN_TxFrame,DM_Motor_Info_t *DM_Motor,DM_Motor_CMD_Type_e CMD){
 
 	CAN_TxFrame->Header.StdId = DM_Motor->CANFrame.TxIdentifier;
   	
@@ -217,7 +217,7 @@ void DM_Motor_Command(CAN_TxFrame_TypeDef *CAN_TxFrame,DM_Motor_Info_Typedef *DM
   * @param  Postion Velocity KP KD Torgue: Target
   * @retval None
   */
-void DM_Motor_CAN_TxMessage(CAN_TxFrame_TypeDef *CAN_TxFrame,DM_Motor_Info_Typedef *DM_Motor,float Postion, float Velocity, float KP, float KD, float Torque){
+void DM_Motor_CAN_TxMessage(CAN_TxFrame_t *CAN_TxFrame,DM_Motor_Info_t *DM_Motor,float Postion, float Velocity, float KP, float KD, float Torque){
 	
    if(DM_Motor->Control_Mode == MIT){
 		 
@@ -289,7 +289,7 @@ void DM_Motor_CAN_TxMessage(CAN_TxFrame_TypeDef *CAN_TxFrame,DM_Motor_Info_Typed
   *                               the target current or velocity for one motor
   * @retval None
   */
-void DJI_Motor_CAN_TxMessage(CAN_TxFrame_TypeDef *CAN_TxFrame,DJI_Motor_Info_Typedef *DJI_Motor,int16_t Current_or_Velocity[4]){
+void DJI_Motor_CAN_TxMessage(CAN_TxFrame_t *CAN_TxFrame,DJI_Motor_Info_t *DJI_Motor,int16_t Current_or_Velocity[4]){
 
   CAN_TxFrame->Header.StdId = DJI_Motor->CANFrame.TxIdentifier;
 
@@ -348,7 +348,7 @@ float F_Loop_Constrain(float Input, float Min_Value, float Max_Value)
   * @param  MAXEncoder   the specified motor max Encoder number
   * @retval anglesum
   */
-static float DJI_Motor_Encoder_To_Anglesum(DJI_Motor_Data_Typedef *Data,float Torque_Ratio,uint16_t MAXEncoder)
+static float DJI_Motor_Encoder_To_Anglesum(DJI_Motor_Data_t *Data,float Torque_Ratio,uint16_t MAXEncoder)
 {
   float res1 = 0,res2 =0;
   
@@ -404,7 +404,7 @@ static float DJI_Motor_Encoder_To_Anglesum(DJI_Motor_Data_Typedef *Data,float To
   * @param  MAXEncoder   the specified motor max Encoder number
   * @retval angle
   */
-float DJI_Motor_Encoder_To_Angle(DJI_Motor_Data_Typedef *Data,float torque_ratio,uint16_t MAXEncoder)
+float DJI_Motor_Encoder_To_Angle(DJI_Motor_Data_t *Data,float torque_ratio,uint16_t MAXEncoder)
 {	
   float Encoder_Err = 0.f;
   

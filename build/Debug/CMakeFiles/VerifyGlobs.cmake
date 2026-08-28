@@ -4,9 +4,19 @@
 # USER_SOURCES at CMakeLists.txt:46 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "E:/xiangmu/infantry27/User/**/*.c")
 set(OLD_GLOB
+  "E:/xiangmu/infantry27/User/APP/Src/CAN_Task.c"
+  "E:/xiangmu/infantry27/User/APP/Src/Control_Task.c"
+  "E:/xiangmu/infantry27/User/APP/Src/Detect_Task.c"
+  "E:/xiangmu/infantry27/User/APP/Src/INS_Task.c"
   "E:/xiangmu/infantry27/User/BSP/Src/bsp_can.c"
+  "E:/xiangmu/infantry27/User/BSP/Src/bsp_mcu.c"
+  "E:/xiangmu/infantry27/User/BSP/Src/bsp_uart.c"
   "E:/xiangmu/infantry27/User/Components/Controller/Src/Pid.c"
+  "E:/xiangmu/infantry27/User/Components/Controller/Src/Sliding.c"
+  "E:/xiangmu/infantry27/User/Components/Debug/Src/Vofa.c"
   "E:/xiangmu/infantry27/User/Components/Device/Src/Motor.c"
+  "E:/xiangmu/infantry27/User/Components/Device/Src/Remote_Control.c"
+  "E:/xiangmu/infantry27/User/Components/Device/Src/Wit901c.c"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -32,9 +42,19 @@ endif()
 # USER_HEADERS at CMakeLists.txt:51 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "E:/xiangmu/infantry27/User/**/*.h")
 set(OLD_GLOB
+  "E:/xiangmu/infantry27/User/APP/Inc/CAN_Task.h"
+  "E:/xiangmu/infantry27/User/APP/Inc/Control_Task.h"
+  "E:/xiangmu/infantry27/User/APP/Inc/Detect_Task.h"
+  "E:/xiangmu/infantry27/User/APP/Inc/INS_Task.h"
   "E:/xiangmu/infantry27/User/BSP/Inc/bsp_can.h"
+  "E:/xiangmu/infantry27/User/BSP/Inc/bsp_mcu.h"
+  "E:/xiangmu/infantry27/User/BSP/Inc/bsp_uart.h"
   "E:/xiangmu/infantry27/User/Components/Controller/Inc/Pid.h"
+  "E:/xiangmu/infantry27/User/Components/Controller/Inc/Sliding.h"
+  "E:/xiangmu/infantry27/User/Components/Debug/Inc/Vofa.h"
   "E:/xiangmu/infantry27/User/Components/Device/Inc/Motor.h"
+  "E:/xiangmu/infantry27/User/Components/Device/Inc/Remote_Control.h"
+  "E:/xiangmu/infantry27/User/Components/Device/Inc/Wit901c.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

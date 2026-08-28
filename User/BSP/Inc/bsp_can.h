@@ -27,7 +27,7 @@ typedef struct {
     CAN_HandleTypeDef *hcan;
     CAN_TxHeaderTypeDef Header;
     uint8_t             Data[8];
-} CAN_TxFrame_TypeDef;
+} CAN_TxFrame_t;
 
 /**
  * @brief The structure that contains the Information of CAN Receive.
@@ -36,12 +36,12 @@ typedef struct {
     CAN_HandleTypeDef *hcan;
     CAN_RxHeaderTypeDef Header;
     uint8_t             Data[8];
-} CAN_RxFrame_TypeDef;
+} CAN_RxFrame_t;
 
 /* Externs ------------------------------------------------------------------*/
-extern CAN_TxFrame_TypeDef CAN1_TxFrame;
-extern CAN_TxFrame_TypeDef CAN2_TxFrame;
-extern void USER_CAN_AddMessageToTxMailbox(CAN_TxFrame_TypeDef *CAN_TxFrame);
+extern CAN_TxFrame_t CAN1_TxFrame;
+extern CAN_TxFrame_t CAN2_TxFrame;
+extern void USER_CAN_AddMessageToTxMailbox(CAN_TxFrame_t *CAN_TxFrame);
 extern void BSP_CAN_Init(void);
 
 #endif
