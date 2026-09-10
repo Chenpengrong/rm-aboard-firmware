@@ -10,7 +10,7 @@
             "executable": "e:\\xiangmu\\infantry27\\build\\Debug\\infantry27.elf",
             "device": "STM32F427IIHX",
             "configFiles": [
-                "interface/stlink-v2.cfg",
+                "interface/cmsis-dap.cfg",
                 "target/stm32f4x.cfg"
             ],
             "gdbPath": "D:\\software\\msys2\\msys64\\ucrt64\\bin\\arm-none-eabi-gdb.exe",
@@ -33,7 +33,8 @@
             "serverpath": "D:\\software\\msys2\\msys64\\ucrt64\\bin\\openocd.exe",
             "searchDir": [
                 "D:\\software\\msys2\\msys64\\ucrt64\\share\\openocd\\scripts"
-            ]
+            ],
+            "svdFile": "c:\\Users\\Administrator\\AppData\\Roaming\\Code\\User\\globalStorage\\xufeng.stm32-dev-tools\\svd\\STM32F427.svd"
         }
     ]
 }

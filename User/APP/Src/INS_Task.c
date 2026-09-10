@@ -17,6 +17,16 @@
 #include "Remote_Control.h"
 #include "Vofa.h"
 
+
+float acc_x = 0.f;
+float acc_y = 0.f;
+float acc_z = 0.f;
+int Ch1 = 0;
+int Ch2 = 0;
+int Ch3 = 0;
+int Ch4 = 0;
+
+
 void INS_Task(void const * argument)
 {
   /* USER CODE BEGIN INS_Task */
@@ -29,19 +39,18 @@ void INS_Task(void const * argument)
 		INS_Task_SysTick = osKernelSysTick();
 
     IMU_Process();
-    float acc_x = get_IMU_data_pointer()->acc[0];
-    float acc_y = get_IMU_data_pointer()->acc[1];
-    float acc_z = get_IMU_data_pointer()->acc[2];
+    acc_x = get_IMU_data_pointer()->acc[0];
+    acc_y = get_IMU_data_pointer()->acc[1];
+    acc_z = get_IMU_data_pointer()->acc[2];
 
-    int Ch1 = get_remote_control_data_pointer()->rc.Ch1;
-    int Ch2 = get_remote_control_data_pointer()->rc.Ch2;
-    int Ch3 = get_remote_control_data_pointer()->rc.Ch3;
-    int Ch4 = get_remote_control_data_pointer()->rc.Ch4;
+    Ch1 = get_remote_control_data_pointer()->rc.Ch1;
+    Ch2 = get_remote_control_data_pointer()->rc.Ch2;
+    Ch3 = get_remote_control_data_pointer()->rc.Ch3;
+    Ch4 = get_remote_control_data_pointer()->rc.Ch4;
 		
-    SetTxData(0, 1.3f);
-    serial_JustFloat(&huart7, GetTxData(), tx_lenth);
-    SetTxData(1, 1.3f);
-    serial_JustFloat(&huart7, GetTxData(), tx_lenth);
+    // SetTxData(0, 1.3f);
+    // SetTxData(1, 2.5f);
+    // serial_JustFloat(&huart7, GetTxData(), tx_lenth);
 
 		osDelay(1);
   }

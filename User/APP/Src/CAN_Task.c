@@ -28,9 +28,9 @@ void CAN_Task(void const * argument)
   {
 		CAN_Task_SysTick = osKernelSysTick();
 
-    int16_t Current_or_Velocity[4] = {2000,2000,2000,2000};
-    DJI_Motor_CAN_TxMessage(&CAN1_TxFrame,DJI_Chassis_Motor,Current_or_Velocity);
-    DM_Motor_CAN_TxMessage(&CAN2_TxFrame,&DM_Pitch_Motor,0.f,0.f,2.f,0.1f,0.f);
+    // int16_t Current_or_Velocity[4] = {2000,2000,2000,2000};
+    // DJI_Motor_CAN_TxMessage(&CAN1_TxFrame,DJI_Chassis_Motor,Current_or_Velocity);
+    // DM_Motor_CAN_TxMessage(&CAN2_TxFrame,&DM_Pitch_Motor,0.f,0.f,2.f,0.1f,0.f);
 		
 		osDelay(1);
   }

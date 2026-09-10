@@ -68,7 +68,7 @@ static void USART_RxDMA_MultiBuffer_Init(UART_HandleTypeDef *huart, uint32_t *Ds
 {
 	huart->ReceptionType = HAL_UART_RECEPTION_TOIDLE;
 
-	huart->RxXferSize = DataLength * 2;
+	huart->RxXferSize = DataLength;
 
 	SET_BIT(huart->Instance->CR3, USART_CR3_DMAR);
 
@@ -117,7 +117,7 @@ static void USER_USART1_RxHandler(UART_HandleTypeDef *huart, uint16_t Size)
 		((DMA_Stream_TypeDef *)huart->hdmarx->Instance)->CR |= DMA_SxCR_CT;
 
 		/* Reset the receive count */
-		__HAL_DMA_SET_COUNTER(huart->hdmarx, SBUS_RX_BUF_NUM * 2);
+		__HAL_DMA_SET_COUNTER(huart->hdmarx, SBUS_RX_BUF_NUM);
 
 		/* Judge whether size is equal to the length of the received data */
 		if (Size == RC_FRAME_LENGTH)
@@ -136,7 +136,7 @@ static void USER_USART1_RxHandler(UART_HandleTypeDef *huart, uint16_t Size)
 		((DMA_Stream_TypeDef *)huart->hdmarx->Instance)->CR &= ~(DMA_SxCR_CT);
 
 		/* Reset the receive count */
-		__HAL_DMA_SET_COUNTER(huart->hdmarx, SBUS_RX_BUF_NUM * 2);
+		__HAL_DMA_SET_COUNTER(huart->hdmarx, SBUS_RX_BUF_NUM);
 
 		if (Size == RC_FRAME_LENGTH)
 		{
@@ -166,7 +166,7 @@ static void USER_UART8_RxHandler(UART_HandleTypeDef *huart, uint16_t Size)
 		((DMA_Stream_TypeDef *)huart->hdmarx->Instance)->CR |= DMA_SxCR_CT;
 
 		/* Reset the receive count */
-		__HAL_DMA_SET_COUNTER(huart->hdmarx, IMU_RX_BUF_SIZE * 2);
+		__HAL_DMA_SET_COUNTER(huart->hdmarx, IMU_RX_BUF_SIZE);
 
 		/* 数据拷贝到处理缓冲区, 浮点运算移到任务中 */
 		memcpy(imu_proc_buf_it, IMU_MultiRx_Buf[0], IMU_RX_BUF_SIZE);
@@ -182,7 +182,7 @@ static void USER_UART8_RxHandler(UART_HandleTypeDef *huart, uint16_t Size)
 		((DMA_Stream_TypeDef *)huart->hdmarx->Instance)->CR &= ~(DMA_SxCR_CT);
 
 		/* Reset the receive count */
-		__HAL_DMA_SET_COUNTER(huart->hdmarx, IMU_RX_BUF_SIZE * 2);
+		__HAL_DMA_SET_COUNTER(huart->hdmarx, IMU_RX_BUF_SIZE);
 
 		/* 数据拷贝到处理缓冲区, 浮点运算移到任务中 */
 		memcpy(imu_proc_buf_it, IMU_MultiRx_Buf[1], IMU_RX_BUF_SIZE);

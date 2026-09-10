@@ -1,9 +1,10 @@
 {
     "stm32.selectedChip": "STM32F427IIHX",
-    "stm32.debugInterface": "stlink",
+    "stm32.debugInterface": "cmsis-dap",
     "cmake.cmakePath": "D:/software/msys2/msys64/ucrt64/bin/cmake.exe",
     "cmake.ninjaPath": "D:/software/msys2/msys64/ucrt64/bin/ninja.exe",
     "cmake.generator": "Ninja",
+    "cortex-debug.gdbPath": "D:\\software\\msys2\\msys64\\ucrt64\\bin\\gdb-multiarch.exe",
     "cmake.configureArgs": [
         "-DCMAKE_MAKE_PROGRAM=D:/software/msys2/msys64/ucrt64/bin/ninja.exe"
     ]
