@@ -1,8 +1,8 @@
-# Install script for directory: E:/xiangmu/infantry27/cmake/stm32cubemx
+# Install script for directory: E:/xiangmu/infantry27_Aboard/cmake/stm32cubemx
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/infantry27")
+  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/rm-aboard-firmware")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,12 +34,12 @@ endif()
 
 # Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "D:/software/VS-code/mingw64/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "D:/software/msys2/msys64/ucrt64/bin/arm-none-eabi-objdump.exe")
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "E:/xiangmu/infantry27/build/Debug/cmake/stm32cubemx/install_local_manifest.txt"
+  file(WRITE "E:/xiangmu/infantry27_Aboard/build/Debug/cmake/stm32cubemx/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

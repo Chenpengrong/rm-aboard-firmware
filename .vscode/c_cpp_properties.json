@@ -13,7 +13,6 @@
                 "${workspaceFolder}/Drivers/CMSIS/Include",
                 "${workspaceFolder}/User/APP/Inc",
             "${workspaceFolder}/User/BSP/Inc",
-            "${workspaceFolder}/User/Components/Controller/Inc",
             "${workspaceFolder}/User/Components/Debug/Inc",
             "${workspaceFolder}/User/Components/Device/Inc"
             ],

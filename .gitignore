@@ -1,0 +1,42 @@
+# ---- 构建产物 ----
+build/
+cmake-build-*/
+out/
+Debug/
+Release/
+*.elf
+*.hex
+*.bin
+*.map
+*.list
+*.o
+*.d
+*.su
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+
+# ---- IDE / 编辑器 ----
+.idea/
+*.uvguix.*
+*.uvoptx
+*.uvprojx
+*.ioc.bak
+.vscode/settings.json
+.embedded-targets.json
+.cache/
+*.code-workspace
+
+# ---- 操作系统 ----
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# ---- 备份 / 临时文件 ----
+*~
+*.bak
+*.orig
+*.rej
+*.tmp
+*.log

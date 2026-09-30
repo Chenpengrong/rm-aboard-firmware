@@ -20,7 +20,7 @@ void CAN_Task(void const * argument)
   /* USER CODE BEGIN CAN_Task */
   TickType_t CAN_Task_SysTick = 0;
 
-  DM_Motor_Command(&CAN2_TxFrame,&DM_Pitch_Motor,Motor_Enable);
+  
   HAL_Delay(30);
 
  /* Infinite loop */
@@ -28,8 +28,13 @@ void CAN_Task(void const * argument)
   {
 		CAN_Task_SysTick = osKernelSysTick();
 
-    // int16_t Current_or_Velocity[4] = {2000,2000,2000,2000};
-    // DJI_Motor_CAN_TxMessage(&CAN1_TxFrame,DJI_Chassis_Motor,Current_or_Velocity);
+    // DM_Motor_Command(&CAN2_TxFrame,&DM_Pitch_Motor,Motor_Enable);
+
+    int16_t Current_or_Velocity[4] = {0,0,0,0};
+    // int16_t Current_or_Velocity[4] = {2000,2000,2000,2000};//3508
+    // int16_t Current_or_Velocity[4] = {5000,0,0,0};//6020
+    // int16_t Current_or_Velocity[4] = {0,0,1000,0};//2006
+    DJI_Motor_CAN_TxMessage(&CAN1_TxFrame,&DJI_Paddle_Wheel_Motor,Current_or_Velocity);
     // DM_Motor_CAN_TxMessage(&CAN2_TxFrame,&DM_Pitch_Motor,0.f,0.f,2.f,0.1f,0.f);
 		
 		osDelay(1);

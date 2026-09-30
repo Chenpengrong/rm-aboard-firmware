@@ -24,9 +24,9 @@ set(CMAKE_C_COMPILER_ARCHITECTURE_ID "armv7")
 
 
 
-set(CMAKE_AR "D:/software/VS-code/mingw64/bin/ar.exe")
+set(CMAKE_AR "D:/software/msys2/msys64/ucrt64/bin/arm-none-eabi-ar.exe")
 set(CMAKE_C_COMPILER_AR "D:/software/msys2/msys64/ucrt64/bin/arm-none-eabi-gcc-ar.exe")
-set(CMAKE_RANLIB "D:/software/VS-code/mingw64/bin/ranlib.exe")
+set(CMAKE_RANLIB "D:/software/msys2/msys64/ucrt64/bin/arm-none-eabi-ranlib.exe")
 set(CMAKE_C_COMPILER_RANLIB "D:/software/msys2/msys64/ucrt64/bin/arm-none-eabi-gcc-ranlib.exe")
 set(CMAKE_LINKER "D:/software/msys2/msys64/ucrt64/bin/arm-none-eabi-g++.exe")
 set(CMAKE_LINKER_LINK "")

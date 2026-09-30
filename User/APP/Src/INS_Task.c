@@ -43,10 +43,10 @@ void INS_Task(void const * argument)
     acc_y = get_IMU_data_pointer()->acc[1];
     acc_z = get_IMU_data_pointer()->acc[2];
 
-    Ch1 = get_remote_control_data_pointer()->rc.Ch1;
-    Ch2 = get_remote_control_data_pointer()->rc.Ch2;
-    Ch3 = get_remote_control_data_pointer()->rc.Ch3;
-    Ch4 = get_remote_control_data_pointer()->rc.Ch4;
+    Ch1 = get_remote_control_data_pointer()->Ch1;
+    Ch2 = get_remote_control_data_pointer()->Ch2;
+    Ch3 = get_remote_control_data_pointer()->Ch3;
+    Ch4 = get_remote_control_data_pointer()->Ch4;
 		
     // SetTxData(0, 1.3f);
     // SetTxData(1, 2.5f);

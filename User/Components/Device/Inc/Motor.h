@@ -19,9 +19,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
 #include "bsp_can.h"
-#include "Pid.h"
 #include <string.h>
-#include "stdbool.h"
+#include <stdbool.h>
+
+
 
 /**
  * @brief typedef enum that contains the type of DJI Motor Device.

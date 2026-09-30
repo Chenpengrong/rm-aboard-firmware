@@ -6,7 +6,7 @@
 # It is included in the main 'build.ninja'.
 
 # =============================================================================
-# Project: infantry27
+# Project: rm-aboard-firmware
 # Configurations: Debug
 # =============================================================================
 # =============================================================================
@@ -14,7 +14,7 @@
 #############################################
 # Rule for compiling ASM files.
 
-rule ASM_COMPILER__infantry27_unscanned_Debug
+rule ASM_COMPILER__rm-aboard-firmware_unscanned_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ${LAUNCHER}${CODE_CHECK}D:\software\msys2\msys64\ucrt64\bin\arm-none-eabi-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -24,7 +24,7 @@ rule ASM_COMPILER__infantry27_unscanned_Debug
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__infantry27_unscanned_Debug
+rule C_COMPILER__rm-aboard-firmware_unscanned_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ${LAUNCHER}${CODE_CHECK}D:\software\msys2\msys64\ucrt64\bin\arm-none-eabi-gcc.exe $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -34,7 +34,7 @@ rule C_COMPILER__infantry27_unscanned_Debug
 #############################################
 # Rule for linking C executable.
 
-rule C_EXECUTABLE_LINKER__infantry27_Debug
+rule C_EXECUTABLE_LINKER__rm-aboard-firmware_Debug
   command = C:\Windows\system32\cmd.exe /C "$PRE_LINK && D:\software\msys2\msys64\ucrt64\bin\arm-none-eabi-gcc.exe $FLAGS $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES && $POST_BUILD"
   description = Linking C executable $TARGET_FILE
   restat = $RESTAT
@@ -72,7 +72,7 @@ rule C_COMPILER__FreeRTOS_unscanned_Debug
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = D:\software\msys2\msys64\ucrt64\bin\cmake.exe --regenerate-during-build -SE:\xiangmu\infantry27 -BE:\xiangmu\infantry27\build\Debug
+  command = D:\software\msys2\msys64\ucrt64\bin\cmake.exe --regenerate-during-build -SE:\xiangmu\infantry27_Aboard -BE:\xiangmu\infantry27_Aboard\build\Debug
   description = Re-running CMake...
   generator = 1
 
@@ -81,7 +81,7 @@ rule RERUN_CMAKE
 # Rule for re-checking globbed directories.
 
 rule VERIFY_GLOBS
-  command = D:\software\msys2\msys64\ucrt64\bin\cmake.exe -P E:\xiangmu\infantry27\build\Debug\CMakeFiles\VerifyGlobs.cmake
+  command = D:\software\msys2\msys64\ucrt64\bin\cmake.exe -P E:\xiangmu\infantry27_Aboard\build\Debug\CMakeFiles\VerifyGlobs.cmake
   description = Re-checking globbed directories...
   generator = 1
 

@@ -17,7 +17,8 @@
 #define BSP_MCU_H
 
 /* Includes ------------------------------------------------------------------*/
-#include "stdint.h"
+#include <stdint.h>
+
 
 /* Exported functions prototypes ---------------------------------------------*/
 

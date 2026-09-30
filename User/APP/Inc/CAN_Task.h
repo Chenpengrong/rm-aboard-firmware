@@ -1,6 +1,6 @@
 /**
   ******************************************************************************
-  * @file           : CAN_Task.c
+  * @file           : CAN_Task.h
   * @brief          : CAN task
   * @author         : Chen
   * @date           : 2026/08/23
@@ -16,8 +16,8 @@
 #define CAN_TASK_H
 
 /* Includes ------------------------------------------------------------------*/
-#include "stdint.h"
-#include "stdbool.h"
+#include <stdint.h>
+#include <stdbool.h>
 
 
 

@@ -24,8 +24,8 @@ DJI_Motor_Info_t DJI_YAW_Motor =
 {
     .Type = DJI_GM6020,
     .CANFrame = {
-        .TxIdentifier = 0x200,
-        .RxIdentifier = 0x209, //ID = 5
+        .TxIdentifier = 0x1FF,
+        .RxIdentifier = 0x205, //ID = 1 (0x204 + ID)
     }
 };
 
@@ -72,7 +72,7 @@ DJI_Motor_Info_t DJI_Paddle_Wheel_Motor =
     .Type = DJI_M2006,
     .CANFrame = {
         .TxIdentifier = 0x1FF,
-        .RxIdentifier = 0x207, //ID = 7
+        .RxIdentifier = 0x207, //ID = 7 (0x200 + ID)
     }
 };
 
@@ -86,7 +86,7 @@ DM_Motor_Info_t DM_Pitch_Motor =
     .Type = DM_4310,
     .Control_Mode = MIT,
     .CANFrame = {
-        .TxIdentifier = 0x01,
+        .TxIdentifier = 0x101,
         .RxIdentifier = 0x101, //ID = 1
     }
 };
@@ -404,7 +404,7 @@ static float DJI_Motor_Encoder_To_Anglesum(DJI_Motor_Data_t *Data,float Torque_R
   * @param  MAXEncoder   the specified motor max Encoder number
   * @retval angle
   */
-float DJI_Motor_Encoder_To_Angle(DJI_Motor_Data_t *Data,float torque_ratio,uint16_t MAXEncoder)
+static float DJI_Motor_Encoder_To_Angle(DJI_Motor_Data_t *Data,float torque_ratio,uint16_t MAXEncoder)
 {	
   float Encoder_Err = 0.f;
   
